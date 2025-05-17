@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8" />
+    <title>เว็บโดนด่า</title>
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #c62828;
+            text-align: center;
+        }
+        .insult-box {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(198, 40, 40, 0.3);
+            max-width: 400px;
+        }
+        .insult-box h1 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="insult-box">
+        <h1>กดเข้ามาหาพ่อมึงหรอ</h1>
+        <p id="insult"></p>
+    </div>
+
+    <script>
+        const insults = [
+            "ทำไมโง่จังวะ!",
+            "เข้าเว็บนี้บ่อย ๆ สมองจะช้าลงนะ!",
+            "อย่าเสียเวลาเข้ามาเลย บ้าเปล่า?",
+            "แค่เข้ามาก็ซวยแล้ว!",
+            "เธอไม่มีอะไรทำจริง ๆ ใช่ไหม?",
+            "คิดก่อนเข้าหน่อยนะ ไอ้ซุ่มซ่าม!",
+            "แค่เข้ามาโดนด่า นี่แหละชีวิต!",
+            "สมองตื้อ ๆ แบบนี้ จะรอดไหม?",
+        ];
+
+        function getRandomInsult() {
+            return insults[Math.floor(Math.random() * insults.length)];
+        }
+
+        document.getElementById('insult').innerText = getRandomInsult();
+    </script>
+</body>
+</html>
