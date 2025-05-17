@@ -1,55 +1,89 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8" />
-    <title>เว็บโดนด่า</title>
-    <style>
-        body {
-            font-family: 'Sarabun', sans-serif;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            color: #c62828;
-            text-align: center;
-        }
-        .insult-box {
-            background: #fff;
-            padding: 30px 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(198, 40, 40, 0.3);
-            max-width: 400px;
-        }
-        .insult-box h1 {
-            margin-bottom: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>สุขสันต์วันเกิด!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ffcccc, #ffe6e6);
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #ff3399;
+    }
+
+    p {
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #ff66b2;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .balloons {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .balloon {
+      position: absolute;
+      width: 50px;
+      height: 70px;
+      background-color: #ff99cc;
+      border-radius: 50%;
+      animation: float 5s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+  </style>
 </head>
 <body>
-    <div class="insult-box">
-        <h1>กดเข้ามาหาพ่อมึงหรอ</h1>
-        <p id="insult"></p>
-    </div>
+  <div class="balloons" id="balloons"></div>
+  <h1>สุขสันต์วันเกิด 🎉</h1>
+  <p>ขอให้วันนี้เป็นวันที่ดีที่สุดของคุณ!</p>
+  <button onclick="showBalloons()">ปล่อยลูกโป่ง!</button>
 
-    <script>
-        const insults = [
-            "ทำไมโง่จังวะ!",
-            "เข้าเว็บนี้บ่อย ๆ สมองจะช้าลงนะ!",
-            "อย่าเสียเวลาเข้ามาเลย บ้าเปล่า?",
-            "แค่เข้ามาก็ซวยแล้ว!",
-            "เธอไม่มีอะไรทำจริง ๆ ใช่ไหม?",
-            "คิดก่อนเข้าหน่อยนะ ไอ้ซุ่มซ่าม!",
-            "แค่เข้ามาโดนด่า นี่แหละชีวิต!",
-            "สมองตื้อ ๆ แบบนี้ จะรอดไหม?",
-        ];
+  <script>
+    function showBalloons() {
+      const container = document.getElementById('balloons');
+      for (let i = 0; i < 20; i++) {
+        const balloon = document.createElement('div');
+        balloon.classList.add('balloon');
+        balloon.style.left = Math.random() * 100 + 'vw';
+        balloon.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+        balloon.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        container.appendChild(balloon);
 
-        function getRandomInsult() {
-            return insults[Math.floor(Math.random() * insults.length)];
-        }
-
-        document.getElementById('insult').innerText = getRandomInsult();
-    </script>
+        // ลบลูกโป่งหลังจากลอยเสร็จ
+        setTimeout(() => container.removeChild(balloon), 7000);
+      }
+    }
+  </script>
 </body>
 </html>
